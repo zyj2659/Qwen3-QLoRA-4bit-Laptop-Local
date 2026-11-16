@@ -1,0 +1,39 @@
+# ============================================================
+# 赛琳娜 LoRA 微调环境
+# 实测环境：Windows 11 / Python 3.12.0 / CUDA 12.1 / RTX 3060 Laptop 6GB
+# conda 环境名：the_sai
+# 版本与 D:\ComVision\env\the_sai 实际安装一致
+# ============================================================
+
+# PyTorch CUDA 12.1 轮子（torch==2.5.1+cu121 必须从该索引下载）
+--extra-index-url https://download.pytorch.org/whl/cu121
+
+# ---------- 核心训练栈 ----------
+torch==2.5.1+cu121
+transformers==5.17.0
+trl==1.15.0
+datasets==4.8.5
+accelerate==1.15.0
+peft==0.21.2
+bitsandbytes==0.50.2
+unsloth==2026.11.2
+unsloth_zoo==2026.11.2
+
+# ---------- 数据处理 / 权重读写 ----------
+safetensors==0.8.0
+tokenizers==0.23.3
+huggingface_hub==1.33.0
+hf-xet==1.8.0
+numpy==2.3.5
+pandas==3.1.1
+sentencepiece==0.2.2
+protobuf==7.36.2
+
+# ---------- Windows 下的 Triton（Unsloth 加速，可选）----------
+triton-windows==3.9.0.post30
+
+# 说明：
+# 1. 本环境中的 xformers 0.0.28.post3 与 torch 2.5.1 不兼容，Unsloth 会自动回退到
+#    PyTorch 原生 attention，因此不列入依赖；需要时可执行 unsloth install-kernels xformers。
+# 2. torchao 0.18.0 与 torch 2.5.1 不兼容（仅影响 QAT / float8），同样未列入。
+# 3. GGUF 导出依赖 llama.cpp，不是 pip 包；见 README 的 UNSLOTH_LLAMA_CPP_PATH 说明。

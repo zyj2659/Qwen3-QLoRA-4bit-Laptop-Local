@@ -1,0 +1,44 @@
+# ===== 数据 / 原始素材（不上传）=====
+赛琳娜/
+/data/selina/
+datasets/
+docs/
+# ===== 权重 / 训练产物（不上传）=====
+selena_lora/
+selena_gguf/
+selena_gguf_gguf/
+*.gguf
+*.safetensors
+*.bin
+*.pt
+*.pth
+checkpoint-*/
+outputs/
+runs/
+wandb/
+
+  # ===== 缓存 / 临时文件 =====
+hub/
+xet/
+unsloth_compiled_cache/
+unsloth_xet_health.*.json
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+*.log
+
+# ===== IDE / 系统 =====
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# ===== 本地配置 =====
+.agent_harnesses.json
+.env
+.venv/
+venv/
+
+# ===== 你明确不想公开的脚本（如保留）=====
+scripts/
+fetch_text.py
